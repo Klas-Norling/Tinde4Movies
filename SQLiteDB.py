@@ -30,10 +30,16 @@ def insertNetflixDB():
     print(titles, "\n", descriptions, "\n", years)
 
 
-
 def searchTitle(title):
     c.execute("SELECT * FROM NetflixTable WHERE titles = ?", (title,))
-    print(c.fetchall())
+    data = c.fetchall()
+    if len(data) == 0:
+        return "There is no movie by that name"
+    else:
+        movieTitle = data[0][0]
+        description = data[0][1]
+        year = data[0][2]
+        return movieTitle, description, str(year)
 
 
 
@@ -41,15 +47,15 @@ def searchTitle(title):
 def dbExists():
     pass
 
+def closeDB():
+    conn.commit()
+    conn.close()
+
+
 
 #createTable()
 #insertNetflixDB()
 searchTitle("13: The Musical")
-
-conn.commit()
-conn.close()
-
-#Testar github
 
 
 
