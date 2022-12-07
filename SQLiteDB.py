@@ -33,6 +33,7 @@ def insertNetflixDB():
 def searchTitle(title):
     c.execute("SELECT * FROM NetflixTable WHERE titles = ?", (title,))
     data = c.fetchall()
+    
     if len(data) == 0:
         return "There is no movie by that name"
     else:
