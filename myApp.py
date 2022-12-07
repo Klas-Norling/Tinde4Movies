@@ -22,6 +22,7 @@ class MyGrid(GridLayout):
         self.input.bind(on_text_validate = self.on_enter)
 
         self.searchButton = Button(text = "Search")
+        self.searchButton.bind(on_press = self.on_pressed)
         
         self.inside.add_widget(self.input)
         self.inside.add_widget(self.searchButton)
@@ -31,10 +32,14 @@ class MyGrid(GridLayout):
         self.add_widget(Label(text='this is just a blank space'))
                
 
-        
-        
     def on_enter(instance, userInput):
         print(searchTitle(userInput.text))
+
+    def on_pressed(self, instance):
+        print(searchTitle(self.input.text))
+        print("Pressed button")
+        
+
 
 
 
